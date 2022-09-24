@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 $primary: #1B2430;
+$secondary: #816797;
 
 
 * {
@@ -15,7 +16,7 @@ body {
 }
 
 :focus {
-  outline: 2px solid orange;
+  outline: 2px solid $secondary;
 }
 
 .button-group {
