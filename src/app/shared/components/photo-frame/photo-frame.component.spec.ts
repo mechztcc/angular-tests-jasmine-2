@@ -53,7 +53,7 @@ describe('PhotoFrameComponent', () => {
     expect(times).toBe(2);
   }));
 
-  it(`should display number of likes when (@Input likes) is incremented`, () => {
+  it(`(D) should display number of likes when (@Input likes) is incremented`, () => {
     component.likes++;
     fixture.detectChanges();
     const element: HTMLElement =
@@ -62,7 +62,7 @@ describe('PhotoFrameComponent', () => {
     expect(element.textContent.trim()).toBe('1');
   });
 
-  it('should update aria-label when (@Input likes) is incremented', () => {
+  it('(D) should update aria-label when (@Input likes) is incremented', () => {
     component.likes++;
     fixture.detectChanges();
 
