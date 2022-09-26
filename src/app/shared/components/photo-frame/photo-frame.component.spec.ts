@@ -2,8 +2,9 @@ import {
   ComponentFixture,
   fakeAsync,
   TestBed,
-  tick,
+  tick
 } from '@angular/core/testing';
+import { LikeWidgetModule } from '../like-widget/like-widget.module';
 
 import { PhotoFrameComponent } from './photo-frame.component';
 
@@ -14,6 +15,7 @@ describe('PhotoFrameComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PhotoFrameComponent],
+      imports: [LikeWidgetModule],
     }).compileComponents();
   });
 
@@ -50,4 +52,14 @@ describe('PhotoFrameComponent', () => {
 
     expect(times).toBe(2);
   }));
+
+  it(`should display number of likes when (@Input likes) is incremented`, () => {
+    fixture.detectChanges();
+    component.likes++;
+    fixture.detectChanges();
+    const element: HTMLElement =
+      fixture.nativeElement.querySelector('.like-counter');
+
+    expect(element.textContent.trim()).toBe('1');
+  });
 });
