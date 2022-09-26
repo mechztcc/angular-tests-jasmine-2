@@ -2,7 +2,7 @@ import {
   ComponentFixture,
   fakeAsync,
   TestBed,
-  tick
+  tick,
 } from '@angular/core/testing';
 import { LikeWidgetModule } from '../like-widget/like-widget.module';
 
@@ -54,12 +54,21 @@ describe('PhotoFrameComponent', () => {
   }));
 
   it(`should display number of likes when (@Input likes) is incremented`, () => {
-    fixture.detectChanges();
     component.likes++;
     fixture.detectChanges();
     const element: HTMLElement =
       fixture.nativeElement.querySelector('.like-counter');
 
     expect(element.textContent.trim()).toBe('1');
+  });
+
+  it('should update aria-label when (@Input likes) is incremented', () => {
+    component.likes++;
+    fixture.detectChanges();
+
+    const element: HTMLElement =
+      fixture.nativeElement.querySelector('.like-counter');
+
+    expect(element.getAttribute('aria-label')).toBe('1: people liked');
   });
 });
