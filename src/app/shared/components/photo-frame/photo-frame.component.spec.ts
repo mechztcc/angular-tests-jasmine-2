@@ -71,4 +71,21 @@ describe('PhotoFrameComponent', () => {
 
     expect(element.getAttribute('aria-label')).toBe('1: people liked');
   });
+
+  it('(D) should display number of likes when clicked', (done) => {
+    component.liked.subscribe(() => {
+      component.likes++;
+      fixture.detectChanges();
+
+      const counteElement: HTMLElement =
+        fixture.nativeElement.querySelector('.like-counter');
+      expect(counteElement.textContent.trim()).toBe('1');
+      done();
+    });
+
+    const likeWidgetContainerEl: HTMLElement =
+      fixture.nativeElement.querySelector('.like-widget-container');
+
+    likeWidgetContainerEl.click();
+  });
 });
